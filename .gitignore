@@ -1,0 +1,13 @@
+# Compiled Python bytecode
+__pycache__/
+*.pyc
+
+# Trained model (binary pickle) - not checked in here, since it can't
+# be reliably transferred through this workflow. Regenerate locally
+# with: python3 baseline_classifier.py
+baseline_model.pkl
+
+# Cleaned dataset (17,450 rows, ~29 MB) - too large to check in here.
+# Regenerate with clean_dataset.py from the raw Hugging Face
+# Phishing_Email.csv, or available on request.
+phishing_dataset_clean.csv
