@@ -18,7 +18,7 @@ unknown sender), and see the verdict immediately.
 """
 
 from baseline_classifier import load_model
-from combined_detector_final import combined_verdict
+from combined_detector import combined_verdict
 
 
 def read_multiline(prompt):
