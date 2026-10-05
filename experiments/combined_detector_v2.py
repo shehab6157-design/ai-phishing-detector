@@ -1,6 +1,6 @@
 """
-combined_detector_v2.py
---------------------------
+combined_detector_v2.py  (superseded - see ../combined_detector.py)
+--------------------------------------------------------------------
 Adds sender-history (sender_history.py) as a THIRD signal alongside
 the baseline content model and the behavioral phrase detector.
 
@@ -19,6 +19,13 @@ Final verdict logic (each condition alone is enough to flag):
     (this is the new rule: a single soft signal + an unverified
     sender is more suspicious than either alone)
 """
+
+import sys
+from pathlib import Path
+
+# Older version kept for reference; run from the repo root:
+#   python experiments/combined_detector_v2.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from baseline_classifier import load_model, predict as baseline_predict
 from behavioral_detector import analyze as behavioral_analyze
