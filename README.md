@@ -44,8 +44,8 @@ Result on the same 5 emails the baseline missed: **4 of 5 caught.**
 grows the set to 12 phishing + 12 safe examples (including
 deliberately subtle, low-pressure phishing and safe emails that
 mention money/deadlines/documents, so those words alone can't cause
-false alarms). `run_expanded_evaluation.py` runs the combined
-baseline+behavioral detector (`combined_detector.py`) against it.
+false alarms). `experiments/run_expanded_evaluation.py` runs the first
+combined baseline+behavioral detector (`experiments/combined_detector_v1.py`) against it.
 
 First run exposed real weaknesses:
 - Only ~50% of phishing caught
@@ -74,8 +74,8 @@ mailbox — a stand-in for real mail-server logs, built to test the
 *detection logic* honestly rather than pretend we have inbox history
 we don't.
 
-`combined_detector_final.py` (the consolidated, final version —
-replaces the earlier `combined_detector.py` / `combined_detector_v2.py`
+`combined_detector.py` (the consolidated, final version —
+replaces the earlier `experiments/combined_detector_v1.py` / `_v2.py`
 split) adds sender risk as a third, independent signal. An email is
 flagged if **any** of the following holds:
 
@@ -116,6 +116,16 @@ meeting-briefing lure, a legal/NDA request, a billing renewal notice)
 — the honest edge of what a 3-signal, no-ML-black-box system catches
 without also risking false positives on real business email.
 
+## How to run
+
+```bash
+pip install pandas scikit-learn
+python3 clean_dataset.py          # needs the raw Hugging Face Phishing_Email.csv
+python3 baseline_classifier.py    # trains and saves baseline_model.pkl
+python3 run_final_evaluation.py   # reproduces the final results
+python3 interactive_demo.py       # paste an email, get a verdict
+```
+
 ## Project files
 
 | File | Purpose |
@@ -126,12 +136,10 @@ without also risking false positives on real business email.
 | `behavioral_detector.py` | Regex-based intent/behavior signal detector |
 | `sender_history.py` | Simulated sender-relationship risk signal |
 | `expanded_test_set.py` | 12 phishing + 12 safe examples for honest evaluation |
-| `combined_detector.py` | First combined detector (baseline + behavioral only) — superseded |
-| `combined_detector_v2.py` | Adds sender history as a third signal — superseded |
-| `combined_detector_final.py` | Final 3-signal detector (baseline + behavioral + sender history) |
-| `run_expanded_evaluation.py` | Runs `combined_detector.py` against the expanded test set |
+| `combined_detector.py` | Final 3-signal detector (baseline + behavioral + sender history) |
 | `run_final_evaluation.py` | Runs the final detector against the expanded test set |
 | `interactive_demo.py` | Live CLI demo — paste an email, get an instant verdict |
+| `experiments/` | Earlier detector versions (v1, v2) and their evaluation, kept to show how the design evolved |
 
 Two files referenced above aren't checked into this repo (see
 `.gitignore`), for practical reasons rather than by choice:
