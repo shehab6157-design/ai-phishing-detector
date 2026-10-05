@@ -1,8 +1,8 @@
 """
-combined_detector_final.py
-----------------------------
+combined_detector.py
+----------------------
 Final, consolidated version of the AI-phishing detector. Replaces
-combined_detector.py and combined_detector_v2.py with a single clean
+the earlier experiments/combined_detector_v1.py and _v2.py with a single clean
 script — same logic as v2 (the version that closed the last gaps),
 just no longer split across two files with an in-between iteration.
 
