@@ -1,7 +1,7 @@
 """
 run_final_evaluation.py
 --------------------------
-Runs combined_detector_final.py (baseline + behavioral + sender-history)
+Runs combined_detector.py (baseline + behavioral + sender-history)
 against the 12 phishing + 12 safe expanded test set.
 
 Each test email needs a sender address. Since expanded_test_set.py
@@ -12,7 +12,7 @@ senders (as routine internal/vendor mail would).
 """
 
 from baseline_classifier import load_model
-from combined_detector_final import combined_verdict
+from combined_detector import combined_verdict
 from expanded_test_set import EXPANDED_PHISHING_EXAMPLES, EXPANDED_SAFE_EXAMPLES
 
 UNKNOWN_SENDER = "unverified-sender@external-domain.net"
