@@ -1,6 +1,6 @@
 """
-combined_detector.py
-----------------------
+combined_detector_v1.py  (superseded - see ../combined_detector.py)
+--------------------------------------------------------------------
 Merges the two detectors built so far into ONE final verdict:
 
 1. Baseline content model (baseline_classifier.py) - catches old-style,
@@ -25,6 +25,13 @@ just cry wolf on everyday email. Catching phishing perfectly while
 flagging every real email as suspicious would be a worse system, not
 a better one (this is the alert-fatigue problem).
 """
+
+import sys
+from pathlib import Path
+
+# Older version kept for reference; run from the repo root:
+#   python experiments/combined_detector_v1.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from baseline_classifier import load_model, predict as baseline_predict
 from behavioral_detector import analyze as behavioral_analyze
