@@ -1,14 +1,21 @@
 """
 run_expanded_evaluation.py
 -----------------------------
-Runs the combined detector (combined_detector.py) against the larger
+Runs the first combined detector (combined_detector_v1.py) against the larger
 test set (expanded_test_set.py) - 12 phishing + 12 safe examples
 instead of the original 5 + 4 - to get a more solid read on real
 performance before adding more complexity to the project.
 """
 
+import sys
+from pathlib import Path
+
+# Older version kept for reference; run from the repo root:
+#   python experiments/run_expanded_evaluation.py
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+
 from baseline_classifier import load_model
-from combined_detector import combined_verdict
+from combined_detector_v1 import combined_verdict
 from expanded_test_set import EXPANDED_PHISHING_EXAMPLES, EXPANDED_SAFE_EXAMPLES
 
 
