@@ -103,18 +103,20 @@ consolidation pass caught it.
 
 ## Final results (`run_final_evaluation.py`)
 
-Against the 12 phishing + 12 safe set, with senders assigned per
-example (unverified/lookalike senders for phishing, known-contact
-senders for safe email — matching how each would arrive in reality):
+Against the 12 phishing + 12 safe set. The test set predates the
+sender signal, so the evaluation gives every phishing email the same
+unverified external sender and every safe email the same known
+contact (a simplification of how each would arrive in reality):
 
 - **9/12 phishing caught (75%)**
 - **0/12 false positives (0%)**
 
-Remaining misses are all low-pressure, single-signal phishing from a
-sender that happens to look legitimate in this test set (a
-meeting-briefing lure, a legal/NDA request, a billing renewal notice)
-— the honest edge of what a 3-signal, no-ML-black-box system catches
-without also risking false positives on real business email.
+Remaining misses are low-pressure phishing with no suspicious
+phrasing at all (a meeting-briefing lure, a legal/NDA request, a
+billing renewal notice). An unknown sender alone is not enough to
+flag a message, by design, so these slip through — the honest edge of
+what a 3-signal, no-ML-black-box system catches without also risking
+false positives on real business email.
 
 ## How to run
 

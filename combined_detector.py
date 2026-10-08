@@ -34,9 +34,10 @@ FINAL VERDICT — flagged if ANY of the following is true:
   - behavioral risk is LOW (exactly one soft signal) AND the sender
     is unknown or on an unrecognized/lookalike domain
 
-Result on the 12 phishing / 12 safe expanded test set: 10/12 phishing
-caught (83%), 0/12 false positives, after sender-history closed the
-final two misses.
+Result on the 12 phishing / 12 safe expanded test set
+(run_final_evaluation.py): 9/12 phishing caught (75%), 0/12 false
+positives. An earlier stage of this file reported 10/12 (83%); the
+README's results history explains the progression.
 """
 
 from baseline_classifier import load_model, predict as baseline_predict
