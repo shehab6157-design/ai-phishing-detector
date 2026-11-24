@@ -97,8 +97,7 @@ wording tested before. The credential and access regex matched
 "verify your account/identity/access" but not "re-verify your
 employee ID" or "restore full access." Fixed by broadening the
 pattern set. This is exactly the kind of narrow-regex trap the
-project is trying to avoid, and worth mentioning as-is in an
-interview: the fix that "worked" wasn't fully generalized until this
+project is trying to avoid: the fix that "worked" wasn't fully generalized until this
 consolidation pass caught it.
 
 ## Final results (`run_final_evaluation.py`)
